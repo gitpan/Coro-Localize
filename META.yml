@@ -13,10 +13,11 @@ meta-spec:
   version: 1.4
 name: Coro-Localize
 requires:
+  Coro: 0
   Data::Alias: 0
   Devel::Declare: 0
 resources:
   bugtracker: https://github.com/iarna/Coro-Localize/issues
   homepage: https://github.com/iarna/Coro-Localize
   repository: https://github.com/iarna/Coro-Localize.git
-version: 0.1.0
+version: 0.1.1

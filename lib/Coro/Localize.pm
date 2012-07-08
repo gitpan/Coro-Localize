@@ -1,7 +1,7 @@
 # ABSTRACT: Localize variables to a coroutine
 package Coro::Localize;
 {
-  $Coro::Localize::VERSION = '0.1.0';
+  $Coro::Localize::VERSION = '0.1.1';
 }
 use common::sense;
 use Devel::Declare;
@@ -206,7 +206,7 @@ Coro::Localize - Localize variables to a coroutine
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
 
 =head1 SYNOPSIS
 
