@@ -22,9 +22,10 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Coro" => 0,
     "Data::Alias" => 0,
-    "Devel::Declare" => 0
+    "Devel::Declare" => 0,
+    "common::sense" => 0
   },
-  "VERSION" => "0.1.1",
+  "VERSION" => "0.1.2",
   "test" => {
     "TESTS" => "t/*.t"
   }

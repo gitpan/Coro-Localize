@@ -1,17 +1,23 @@
 # ABSTRACT: Localize variables to a coroutine
 package Coro::Localize;
 {
-  $Coro::Localize::VERSION = '0.1.1';
+  $Coro::Localize::VERSION = '0.1.2';
 }
 use common::sense;
 use Devel::Declare;
 use Data::Alias ();
 
-my $stub = sub {};
 sub import {
-    my $caller = caller;
-    Devel::Declare->setup_for( $caller => { corolocal => {const => \&parser} } );
-    *{$caller.'::corolocal'} = $stub;
+    my $class = shift;
+    $class->import_into( scalar caller );
+}
+
+my $stub = sub {};
+sub import_into {
+    my $class = shift;
+    my( $target ) = @_;
+    Devel::Declare->setup_for( $target => { corolocal => {const => \&parser} } );
+    *{$target.'::corolocal'} = $stub;
 }
 
 our $prefix = '';
@@ -206,14 +212,16 @@ Coro::Localize - Localize variables to a coroutine
 
 =head1 VERSION
 
-version 0.1.1
+version 0.1.2
 
 =head1 SYNOPSIS
 
     use feature qw( say );
     use Coro;
-    use Coro::Localize;
     use Coro::EV;
+    use Coro::Localize;
+    # Or with Syntax::Feature:
+    # use syntax qw( corolocal );
      
     our $scalar = "main loop";
      
@@ -295,6 +303,18 @@ useless.  In the future it may emit a warning or worse.
 
 L<Coro::LocalScalar> The same sort of idea, but implemented via tied magic
 and/or LVALUE scalars.
+
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Syntax::Feature::Corolocal|Syntax::Feature::Corolocal>
+
+=back
 
 =head1 SOURCE
 

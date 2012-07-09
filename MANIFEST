@@ -5,10 +5,9 @@ MANIFEST
 META.yml
 Makefile.PL
 README
-README.pod
 SIGNATURE
-dist.ini
 lib/Coro/Localize.pm
+lib/Syntax/Feature/Corolocal.pm
 t/array.t
 t/hash.t
 t/release-minimum-version.t
@@ -16,4 +15,4 @@ t/release-no-tabs.t
 t/release-portability.t
 t/release-synopsis.t
 t/scalar.t
-weaver.ini
+t/syntax-feature.t

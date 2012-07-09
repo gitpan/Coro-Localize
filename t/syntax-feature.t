@@ -1,6 +1,17 @@
-use Test::More tests => 8;
+use Test::More ();
+BEGIN {
+    eval q{
+        require syntax;
+    };
+    if ( $@ ) {
+        Test::More->import( skip_all => "Syntax::Feature not installed\n$@" );
+    }
+    else {
+        Test::More->import( tests => 8 );
+    }
+}
 use Coro;
-use Coro::Localize;
+use syntax qw( corolocal );
  
 our $scalar = "main loop";
 
@@ -26,4 +37,3 @@ push @threads, async {
 is( $scalar, "main loop", "scalar main, test 1" );
 $_->join for @threads;
 is( $scalar, "main loop", "scalar main, test 2" );
-
